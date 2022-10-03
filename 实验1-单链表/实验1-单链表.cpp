@@ -616,7 +616,7 @@ void mainMenu() {
 reset:
 
     //构建
-    cout << "按任意键后将跳转到已有数据总表，挑选编号构建顺序表" << endl;
+    cout << "按任意键后将跳转到已有数据总表，挑选编号构建单链表" << endl;
     pause();
 
 
@@ -625,7 +625,7 @@ reset:
     allLink.printList();
 
     system("cls");
-    cout << "输入用于构建顺序表的元素序号（输入0或字母结束输入）：" << endl;
+    cout << "输入用于构建单链表的元素序号（输入0或字母结束输入）：" << endl;
 
     while (cin >> strin) {
         nn = stoi('0'+strin);
@@ -653,7 +653,7 @@ reset:
         goto reset;
     }
     system("cls");
-    cout << "顺序表创建完成，按任意键查看" << endl;
+    cout << "单链表创建完成，按任意键查看" << endl;
     pause();
     system("cls");
     link.printList();

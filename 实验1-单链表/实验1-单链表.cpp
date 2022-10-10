@@ -570,6 +570,19 @@ void screen(LinkList& s)
     }
 }
 
+void invert(LinkList& s)
+{
+    int len = s.getLength();
+    Star a[100];
+    for (int i = 0; i < len; ++i) {
+        a[i] = s.getItem(i+1);
+    }
+    s.clear();
+    for (int i = 0; i <len; ++i) {
+        s.insert(1, a[i]);
+    }
+}
+
 void mainMenu() {
 
     //导入数据
@@ -670,6 +683,7 @@ reset:
         cout << "4.删除" << endl;
         cout << "5.总览表" << endl;
         cout << "6.重置表" << endl;
+        cout << "7.逆置表" << endl;
         cout << endl << "输入序号选择功能：" << endl;
         cin >> menu;
 
@@ -698,6 +712,11 @@ reset:
                 pause();
                 goto reset;
             }
+            break;
+        case '7':
+            invert(link);
+            cout << "逆置成功，按任意键返回上一级" << endl;
+            pause();
             break;
         default:
             system("cls");

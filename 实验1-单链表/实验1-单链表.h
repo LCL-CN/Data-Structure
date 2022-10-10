@@ -68,4 +68,6 @@ void remove(LinkList& s);
 
 void screen(LinkList& s);
 
+void invert(LinkList& s);
+
 void mainMenu();

@@ -24,6 +24,5 @@ int main() {
 	for (int i = 0; i < maxSize; ++i) {
 		cout << seqList[i];
 	}
-	system("pause");
 
 }

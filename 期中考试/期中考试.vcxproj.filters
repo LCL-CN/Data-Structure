@@ -15,16 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Problem1.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Problem2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Problem3.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Problem4.cpp">
+    <ClCompile Include="Solutions.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

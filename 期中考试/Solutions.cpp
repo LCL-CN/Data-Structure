@@ -99,7 +99,7 @@ public:
 
 		//后半部分依次插入
 		Node* p = new Node;
-		back = mid->next;
+		back = mid->next;//后半部分首元素
 		p = first->next;
 		Node* temp;
 		while (back != NULL) {
@@ -192,25 +192,31 @@ public:
 	void show() {
 		DNode* p = head->next;
 		while (p != NULL) {
-			cout << "数据值" << p->data << " " << "频次" << p->frequency << "  "<<endl;
+			cout << "数据值： " << p->data << "\t" << "频次： " << p->frequency <<endl;
 			p = p->next;
 		}
 	}
 	DNode* Locate(int x) {
 		DNode* p = head->next;
+		DNode* max=NULL;//保存待插入位置
 		DNode* temp = NULL;
+
+		//遍历寻找元素
 		while (p != NULL) {
 			if (p->data == x) {
 				p->frequency++;
-				while (p->prior->frequency < p->frequency && p->prior!= head) {
-					temp = p->prior;
-					p->prior = temp->prior;
-					temp->prior->next = p;
-					temp->next = p->next;
-					p->next->prior = temp;
-					temp->prior = p;
-					p->next = temp;
+
+				//比较频次，进行移动
+				max = p->prior;
+				while (max->frequency < p->frequency && max != head) {
+					max = max->prior;
 				}
+				p->prior->next = p->next;
+				p->next->prior = p->prior;
+				p->next = max->next;
+				p->prior = max;
+				max->next->prior = p;
+				max->next = p;
 				return p;
 			}
 			p = p->next;
@@ -324,6 +330,6 @@ int main() {
 
 	//solution3();
 
-	//solution4();
+	solution4();
 
 } 

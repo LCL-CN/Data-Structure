@@ -153,7 +153,7 @@ void problem3(LinkList& l1, LinkList& l2) {
 			temp->next = l1.first->next;
 			l1.first->next = temp;
 		}
-		else if (min->next->data <= l1.first->next->data) {
+		else if (min->next->data <= l2.first->next->data) {
 			temp = min->next;
 			min->next = temp->next;
 			temp->next = l1.first->next;
@@ -230,11 +230,14 @@ private:
 //Solution
 void solution1(){
 	SeqList seq;
-	cout << "输入十个数：" << endl;
+	cout << "输入元素个数：" << endl;
+	int len;
+	cin >> len;
+	cout << "输入"<<len<<"个元素：" << endl;
 	int num = 0;
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < len; ++i) {
 		cin >> num;
-		seq.insert(1, num);
+		seq.insert(i+1, num);
 	}
 	cout << endl;
 	cout << "创建的顺序表为：" << endl;
@@ -248,9 +251,12 @@ void solution1(){
 }
 void solution2() {
 	LinkList link;
-	cout << "输入十个数：" << endl;
+	cout << "输入元素数目：" << endl;
+	int len;
+	cin >> len;
+	cout << "输入"<<len<<"个数：" << endl;
 	int num = 0;
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < len; ++i) {
 		cin >> num;
 		link.insert(i+1, num);
 	}
@@ -266,15 +272,21 @@ void solution2() {
 }
 void solution3(){
 	LinkList link1, link2;
-	cout << "从小到大输入5个数(表一)：" << endl;
+	cout << "输入表一元素数目：" << endl;
+	int len1;
+	cin >> len1;
+	cout << "从小到大输入"<<len1<<"个数(表一)：" << endl;
 	int num1 = 0;
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < len1; ++i) {
 		cin >> num1;
 		link1.insert(i + 1, num1);
 	}
-	cout << "从小到大输入5个数（表二）：" << endl;
+	cout << "输入表二元素数目：" << endl;
+	int len2;
+	cin >> len2;
+	cout << "从小到大输入"<<len2<<"个数（表二）：" << endl;
 	int num2 = 0;
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < len2; ++i) {
 		cin >> num2;
 		link2.insert(i + 1, num2);
 	}
@@ -295,9 +307,12 @@ void solution3(){
 }
 void solution4() {
 	DLinkList Dlink;
-	cout << "输入十个数：" << endl;
+	cout << "输入元素数目：" << endl;
+	int len;
+	cin >> len;
+	cout << "输入"<<len<<"个数：" << endl;
 	int num = 0;
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < len; ++i) {
 		cin >> num;
 		Dlink.insert(i + 1, num);
 	}
@@ -328,8 +343,8 @@ int main() {
 
 	//solution2();
 
-	//solution3();
+	solution3();
 
-	solution4();
+	//solution4();
 
 } 

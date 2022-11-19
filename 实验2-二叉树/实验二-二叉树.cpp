@@ -3,12 +3,7 @@
 using namespace std;
 void BiTree::PreOrder(BiNode* bt)
 {    
-  //if (bt == nullptr)  return;              //递归调用的结束条件
-  //else {
-  //    cout << bt->data;                     //访问根结点bt的数据域
-  //    PreOrder(bt->lchild);              //前序递归遍历bt的左子树
-  //    PreOrder(bt->rchild);             //前序递归遍历bt的右子树  
-  //}
+
     Stack S;
     S.top = -1;
     while (bt != nullptr || S.top != -1) {
@@ -26,12 +21,6 @@ void BiTree::PreOrder(BiNode* bt)
 }
 void BiTree::InOrder(BiNode* bt)
 {
-    //if (bt == nullptr) return;                 //递归调用的结束条件
-    //else {
-    //    InOrder(bt->lchild);                  //中序递归遍历bt的左子树
-    //    cout << bt->data;                      //访问根结点bt的数据域
-    //    InOrder(bt->rchild);                 //中序递归遍历bt的右子树
-    //}
     Stack S;
     S.top = -1;
     while (bt != nullptr || S.top != -1) {
@@ -45,16 +34,9 @@ void BiTree::InOrder(BiNode* bt)
             bt = bt->rchild;
         }
     }
-
 }
 void BiTree::PostOrder(BiNode* bt)
 {
-    //if (bt == nullptr) return;                //递归调用的结束条件
-    //else {
-    //    PostOrder(bt->lchild);              //后序递归遍历bt的左子树
-    //    PostOrder(bt->rchild);              //后序递归遍历bt的右子树
-    //    cout << bt->data;                      //访问根结点bt的数据域
-    //}
     Stack2 S2;
     for (int i = 0; i < 20; ++i) {
         S2.flag[i] = 0;
@@ -78,7 +60,6 @@ void BiTree::PostOrder(BiNode* bt)
             bt = S2.data[S2.top]->rchild;//取右孩子为bt，继续遍历              
         }
     }
-
 }
 void BiTree::LeverOrder()
 {
@@ -92,8 +73,6 @@ void BiTree::LeverOrder()
         if (q->lchild != nullptr)  Q.data[++Q.rear] = q->lchild;
         if (q->rchild != nullptr)  Q.data[++Q.rear] = q->rchild;
     }
-
-
 }
 int BiTree::getDeep()
 {
@@ -106,7 +85,6 @@ int BiTree::getDeep()
     levelFlag = root;
     Q.data[++Q.rear] = root;
     while (Q.front != Q.rear) {
-
         BiNode* q = Q.data[++Q.front];
         if (q == levelFlag) {
             num++;
@@ -128,20 +106,24 @@ leaves* BiTree::getLeaves()
     first->next = NULL;
     Stack S;
     S.top = -1;
-
     Quene Q;
     Q.front = Q.rear = -1;
     if (root == nullptr) return NULL;
     Q.data[++Q.rear] = root;
     while (Q.front != Q.rear) {
         BiNode* q = Q.data[++Q.front];
-        if (q->lchild != nullptr)  Q.data[++Q.rear] = q->lchild;
-        if (q->rchild != nullptr)  Q.data[++Q.rear] = q->rchild;
-        if (q->lchild == nullptr && q->rchild == nullptr) {
-            leaves* p = new leaves;
-            p->leaf = q;
-            p->next = first->next;
-            first->next = p;
+        if (q->lchild != nullptr) {
+            Q.data[++Q.rear] = q->lchild;
+            if (q->rchild != nullptr) Q.data[++Q.rear] = q->rchild;
+        }
+        else {
+            if (q->rchild != nullptr) Q.data[++Q.rear] = q->rchild;
+            else {
+                leaves* p = new leaves;
+                p->leaf = q;
+                p->next = first->next;
+                first->next = p;
+            }
         }
     }
     return first->next;

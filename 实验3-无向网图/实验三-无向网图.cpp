@@ -103,17 +103,17 @@ void Graph::mst_Prim(int v)
 				minEdge[i].adjex = v;
 			}
 		}
-
 	}
 }
 
 void Graph::mst_Kruskal()
 {
+	//初始化
 	int parent[MaxSize];
 	for (int i = 0; i < MaxSize; ++i) {
 		parent[i] = -1;
 	}
-	LowEdge lowedge[MaxSize*MaxSize];
+	LowEdge lowedge[MaxSize * (MaxSize - 1) / 2]{};
 	int num = 0;
 	for (int i = 0; i < vertexNum; ++i) {
 		for (int j = i; j < vertexNum; ++j) {
@@ -124,6 +124,7 @@ void Graph::mst_Kruskal()
 			}
 		}
 	}
+	//选择排序
 	LowEdge temp;
 	int k=0;
 	for (int i = 0; i < edgeNum; ++i) {
@@ -138,9 +139,9 @@ void Graph::mst_Kruskal()
 			lowedge[k] = temp;
 		}
 	}
-
-	int lnum = vertexNum;
-	int ednum = 0;
+	//最小生成树
+	int lnum = vertexNum;//连通分量数目
+	int ednum = 0;//最小边序号
 	int u, v;
 	while (lnum > 1) {
 		u = lowedge[ednum].i;
@@ -153,8 +154,7 @@ void Graph::mst_Kruskal()
 			lnum--;
 		}
 		ednum++;
-	}
-	
+	}	
 }
 
 void Graph::sp_Dijkstra(int v)
